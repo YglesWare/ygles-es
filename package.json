@@ -1,0 +1,30 @@
+{
+  "name": "ygleses",
+  "version": "1.0.0-rc.0",
+  "description": "An ECMAScript framework dedicated for embedded MMI",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YglesEyes/YglesES.git"
+  },
+  "keywords": [
+    "ECMAScript",
+    "Javascript",
+    "Framework",
+    "embedded"
+  ],
+  "author": "Nicolas PILLON",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YglesEyes/YglesES/issues"
+  },
+  "homepage": "https://github.com/YglesEyes/YglesES#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "http-server": "^0.12.3",
+    "lerna": "^4.0.0"
+  }
+}
