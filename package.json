@@ -3,7 +3,18 @@
   "version": "1.0.0-rc.0",
   "description": "An ECMAScript framework dedicated for embedded MMI",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext mjs,js ./packages",
+    "fix": "eslint --fix ./packages",
+    "fix:dry-run": "eslint --fix-dry-run ./packages",
+    "create": "node ./scripts/boilerplate.js",
+    "generate_doc": "lerna run generate_doc",
+    "publish:major": "npm run generate_doc && npm run lint && lerna publish major --dist-tag latest --exact",
+    "publish:minor": "npm run generate_doc && npm run lint && lerna publish minor --dist-tag latest --exact",
+    "publish:patch": "npm run generate_doc && npm run lint && lerna publish patch --dist-tag latest --exact",
+    "publish:premajor": "npm run generate_doc && npm run lint && lerna publish premajor --dist-tag rc --preid=rc --exact",
+    "publish:preminor": "npm run generate_doc && npm run lint && lerna publish preminor --dist-tag rc --preid=rc --exact",
+    "publish:prepatch": "npm run generate_doc && npm run lint && lerna publish prepatch --dist-tag rc --preid=rc --exact",
+    "publish:prerelease": "npm run generate_doc && npm run lint && lerna publish prerelease --dist-tag rc --preid=rc --exact"
   },
   "repository": {
     "type": "git",
@@ -26,5 +37,8 @@
     "eslint": "^7.28.0",
     "http-server": "^0.12.3",
     "lerna": "^4.0.0"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
