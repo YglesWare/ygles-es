@@ -6,7 +6,7 @@
     "lint": "eslint --ext mjs,js ./packages",
     "fix": "eslint --fix ./packages",
     "fix:dry-run": "eslint --fix-dry-run ./packages",
-    "create": "node ./scripts/boilerplate.js",
+    "create": "node ./tools/boilerplate.js",
     "generate_doc": "lerna run generate_doc",
     "publish:major": "npm run generate_doc && npm run lint && lerna publish major --dist-tag latest --exact",
     "publish:minor": "npm run generate_doc && npm run lint && lerna publish minor --dist-tag latest --exact",
