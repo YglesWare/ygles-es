@@ -3,10 +3,11 @@
   "version": "1.0.0-rc.0",
   "description": "An ECMAScript framework dedicated for embedded MMI",
   "scripts": {
-    "lint": "eslint --ext mjs,js ./packages",
     "fix": "eslint --fix ./packages",
-    "fix:dry-run": "eslint --fix-dry-run ./packages",
+    "lint": "eslint --ext mjs,js ./packages",
     "create": "node ./tools/boilerplate.js",
+    "fix:dry-run": "eslint --fix-dry-run ./packages",
+    "spec_manager": "node ./tools/spec_manager/src/server/index.js configs/spec_manager.json",
     "generate_doc": "lerna run generate_doc",
     "publish:major": "npm run generate_doc && npm run lint && lerna publish major --dist-tag latest --exact",
     "publish:minor": "npm run generate_doc && npm run lint && lerna publish minor --dist-tag latest --exact",
@@ -32,7 +33,9 @@
     "url": "https://github.com/YglesEyes/YglesES/issues"
   },
   "homepage": "https://github.com/YglesEyes/YglesES#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@ygles-es/spec_manager": "file:packages/spec_manager"
+  },
   "devDependencies": {
     "eslint": "^7.28.0",
     "http-server": "^0.12.3",

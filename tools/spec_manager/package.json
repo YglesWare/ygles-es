@@ -1,0 +1,23 @@
+{
+  "name": "@ygles-es/spec_manager",
+  "version": "1.0.0-rc.0",
+  "description": "",
+  "main": "src/server/index.js",
+  "scripts": {
+    "generate_doc": "jsdoc2md -c ../../.jsdoc *.mjs > README.md"
+  },
+  "keywords": [],
+  "author": "YglesEyes",
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:YglesWare/ygles-es.git",
+    "directory": "packages/spec_manager"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.11.0"
+  },
+  "bin": {
+    "spec-manager-server": "./src/server/index.js"
+  }
+}

@@ -1,7 +1,8 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 
-const _directory = `packages/${process.argv[2]}`;
+const _pkgName = process.argv[2];
+const _directory = `packages/${_pkgName}`;
 fs.stat(_directory, (err) => {
   if (err) {
     if (err.errno === -2) {
@@ -26,6 +27,278 @@ fs.stat(_directory, (err) => {
 
       fs.writeFileSync('package.json', JSON.stringify(config, '', '  '));
       fs.writeFileSync('index.mjs', 'throw new Error(\'**** Package entry point ****\')');
+      execSync('mkdir -p src/client src/server specs tests story')
+      fs.writeFileSync('specs/dbSpec.json', 
+`{
+  "yglesware-software-db": "spec_manager",
+  "ProjectData": {
+    "name": "${_pkgName}",
+    "trigramme": "",
+    "rootDirectory": "${process.cwd()}"
+  },
+  "SRS": {
+    "revision": "A",
+    "history": [
+      {
+        "author": "TDB",
+        "date": "TDB",
+        "pages": ["All"],
+        "updates": "Creation"
+      }
+    ],
+    "applicableDocuments": [
+      {
+        "name": "AD-1",
+        "url": "N/A"
+      }
+    ],
+    "referenceDocuments": [
+      {
+        "name": "RD-1",
+        "url": "N/A"
+      }
+    ],
+    "terminology": [
+      {
+        "name": "EX",
+        "description": "Example"
+      }
+    ],
+    "description": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "synopsis": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "requirements": [
+      {
+        "section": "",
+        "uid": "",
+        "revision": "",
+        "title": "",
+        "covered": [],
+        "covers": [],
+        "text": "",
+        "figures": [
+          {
+            "file": "",
+            "legend": ""
+          }
+        ]
+      }
+    ],
+    "sectionOrder": []
+  },
+  "SDD": {
+    "revision": "A",
+    "history": [
+      {
+        "author": "TDB",
+        "date": "TDB",
+        "pages": ["All"],
+        "updates": "Creation"
+      }
+    ],
+    "applicableDocuments": [
+      {
+        "name": "AD-1",
+        "url": "N/A"
+      }
+    ],
+    "referenceDocuments": [
+      {
+        "name": "RD-1",
+        "url": "N/A"
+      }
+    ],
+    "terminology": [
+      {
+        "name": "EX",
+        "description": "Example"
+      }
+    ],
+    "description": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "synopsis": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "requirements": [
+      {
+        "section": "",
+        "uid": "",
+        "revision": "",
+        "title": "",
+        "covered": [],
+        "covers": [],
+        "text": "",
+        "figures": [
+          {
+            "file": "",
+            "legend": ""
+          }
+        ]
+      }
+    ],
+    "sectionOrder": []
+  },
+  "TU": {
+    "revision": "A",
+    "history": [
+      {
+        "author": "TDB",
+        "date": "TDB",
+        "pages": ["All"],
+        "updates": "Creation"
+      }
+    ],
+    "applicableDocuments": [
+      {
+        "name": "AD-1",
+        "url": "N/A"
+      }
+    ],
+    "referenceDocuments": [
+      {
+        "name": "RD-1",
+        "url": "N/A"
+      }
+    ],
+    "terminology": [
+      {
+        "name": "EX",
+        "description": "Example"
+      }
+    ],
+    "description": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "synopsis": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "requirements": [
+      {
+        "section": "",
+        "uid": "",
+        "revision": "",
+        "title": "",
+        "covered": [],
+        "covers": [],
+        "text": "",
+        "figures": [
+          {
+            "file": "",
+            "legend": ""
+          }
+        ]
+      }
+    ],
+    "sectionOrder": []
+  },
+  "E2E": {
+    "revision": "A",
+    "history": [
+      {
+        "author": "TDB",
+        "date": "TDB",
+        "pages": ["All"],
+        "updates": "Creation"
+      }
+    ],
+    "applicableDocuments": [
+      {
+        "name": "AD-1",
+        "url": "N/A"
+      }
+    ],
+    "referenceDocuments": [
+      {
+        "name": "RD-1",
+        "url": "N/A"
+      }
+    ],
+    "terminology": [
+      {
+        "name": "EX",
+        "description": "Example"
+      }
+    ],
+    "description": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "synopsis": {
+      "text": "",
+      "figures": [
+        {
+          "file": "",
+          "legend": ""
+        }
+      ]
+    },
+    "requirements": [
+      {
+        "section": "",
+        "uid": "",
+        "revision": "",
+        "title": "",
+        "covered": [],
+        "covers": [],
+        "text": "",
+        "figures": [
+          {
+            "file": "",
+            "legend": ""
+          }
+        ]
+      }
+    ],
+    "sectionOrder": []
+  }
+}
+`
+      );
       const branchName = _directory;
       execSync(`git checkout -b ${branchName}`);
       execSync(`git push --set-upstream origin ${branchName}`);

@@ -1,0 +1,21 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div>Coucou</div>
+  </body>
+
+  <script type="module">
+
+    const client = new WebSocket(window.location.origin.replace('http', 'ws'));
+;
+
+    client.addEventListener('open', () => {
+      // Causes the server to print "Hello"
+      client.send(JSON.stringify({getList: {}}));
+    });
+    client.addEventListener('message', _msg => {
+      console.log(JSON.parse(_msg.data));
+    });
+</script>
+</html>
